@@ -1,0 +1,71 @@
+/* Approved v50 decisions. Legacy aliases preserve component compatibility. */
+:root {
+  --color-forest: #234C40;
+  --color-forest-dark: #17392F;
+  --color-ink: #101613;
+  --color-muted: #626A70;
+  --color-border: #DCE2DE;
+  --color-surface: #F3F6F4;
+  --color-white: #FFFFFF;
+  --color-fibre: #BB8966;
+  --color-fibre-light: #E9D6C5;
+  --radius-md: 14px;
+  --shadow: 0 12px 32px rgba(16,22,19,.06);
+  --font-family: Helvetica,Arial,sans-serif;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --page-max-width: 1280px;
+  --page-padding-desktop: 40px;
+  --page-padding-mobile: 18px;
+  --desktop-hero-min-height: 700px;
+  --desktop-proof-min-height: 66px;
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 40px;
+  --radius-sm: 14px;
+  --radius-lg: 14px;
+  --radius-pill: 99px;
+  --transition-fast: .18s ease;
+  --transition-medium: .35s ease;
+  --transition-slow: .7s cubic-bezier(.22,1,.36,1);
+  --action-arrow-gap: 10px;
+  --glass-surface: rgba(255,255,255,.58);
+  --glass-border: rgba(220,226,222,.46);
+  --glass-shadow: 0 8px 26px rgba(16,22,19,.028);
+  --glass-filter: blur(30px) saturate(180%);
+  --dropdown-glass-surface: rgba(255,255,255,.92);
+  --dropdown-glass-border: rgba(220,226,222,.72);
+  --dropdown-glass-shadow: 0 18px 45px rgba(16,22,19,.12);
+  --dropdown-highlight: rgba(187,137,102,.16);
+  --forest: var(--color-forest);
+  --forest-hover: var(--color-forest-dark);
+  --ink: var(--color-ink);
+  --muted: var(--color-muted);
+  --line: var(--color-border);
+  --surface: var(--color-surface);
+  --white: var(--color-white);
+  --fibre: var(--color-fibre);
+  --fibre-light: var(--color-fibre-light);
+  --radius: var(--radius-md);
+  --font: var(--font-family);
+}
+
+@media (min-width: 981px) and (max-width: 1180px) {
+  :root { --desktop-hero-min-height: 650px; }
+}
+
+@media (min-width: 1501px) {
+  :root { --desktop-hero-min-height: 730px; }
+}
+
+@media (min-width: 1361px) {
+  :root { --desktop-proof-min-height: 52px; }
+}
