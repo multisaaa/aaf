@@ -1,0 +1,174 @@
+html.aaf-loading {
+  overflow: hidden;
+  background: var(--color-forest);
+}
+
+html.aaf-loading body {
+  overflow: hidden;
+}
+html.aaf-loading.aaf-page-fading {
+  background: var(--color-white);
+}
+html.aaf-loading .site-shell {
+  visibility: hidden;
+}
+html.aaf-loading.aaf-intro-revealing .site-shell {
+  visibility: visible;
+}
+html.aaf-loading .site-shell *,
+html.aaf-loading .site-shell *::before,
+html.aaf-loading .site-shell *::after {
+  animation-play-state: paused !important;
+}
+
+.aaf-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  isolation: isolate;
+  color: var(--color-white);
+  display: grid;
+  place-items: center;
+}
+
+.aaf-preloader-curtain {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  fill: var(--color-forest);
+}
+
+.aaf-preloader-brand {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 28px;
+  transition: opacity 180ms ease;
+}
+
+.aaf-preloader-logo {
+  width: clamp(120px, 12vw, 156px);
+  height: auto;
+  overflow: visible;
+}
+
+.aaf-preloader-logo path {
+  fill: var(--color-white);
+  fill-opacity: 0;
+  stroke: var(--color-white);
+  stroke-width: 2;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: aafLogoDraw 1050ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.aaf-preloader-logo path:nth-child(2) {
+  animation-delay: 140ms;
+}
+.aaf-preloader-logo path:nth-child(3) {
+  animation-delay: 280ms;
+}
+
+.aaf-preloader-wordmark {
+  display: grid;
+  justify-items: center;
+  gap: 7px;
+  animation: aafLoaderCopy 650ms 450ms both;
+}
+
+.aaf-preloader-wordmark strong {
+  font:
+    700 21px/1 Helvetica,
+    Arial,
+    sans-serif;
+  letter-spacing: 0.16em;
+}
+.aaf-preloader-wordmark span {
+  font:
+    400 10px/1 Helvetica,
+    Arial,
+    sans-serif;
+  letter-spacing: 0.34em;
+}
+
+.aaf-preloader-track {
+  width: 64px;
+  height: 1px;
+  background: rgba(var(--color-white-rgb), 0.2);
+  overflow: hidden;
+}
+
+.aaf-preloader-track::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--color-white);
+  transform-origin: left;
+  animation: aafLoaderPulse 1400ms ease-in-out infinite;
+}
+
+.aaf-preloader.is-revealing .aaf-preloader-brand {
+  opacity: 0;
+}
+
+.aaf-page-transition {
+  position: fixed;
+  inset: 0;
+  z-index: 10001;
+  background: var(--color-white);
+}
+
+@keyframes aafLogoDraw {
+  0% {
+    stroke-dashoffset: 1;
+    fill-opacity: 0;
+  }
+  60% {
+    stroke-dashoffset: 0;
+    fill-opacity: 0;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    fill-opacity: 1;
+  }
+}
+
+@keyframes aafLoaderCopy {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes aafLoaderPulse {
+  0% {
+    transform: scaleX(0);
+    opacity: 0.4;
+  }
+  60%,
+  100% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aaf-preloader {
+    display: none;
+  }
+  .aaf-page-transition {
+    display: none;
+  }
+  html.aaf-loading {
+    overflow: visible;
+  }
+  html.aaf-loading .site-shell {
+    visibility: visible;
+  }
+}

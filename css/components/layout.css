@@ -1,0 +1,231 @@
+/* layout shared styles. Responsive rules live with their owning component. */
+.section-header {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(340px, 0.7fr);
+  grid-template-areas: 'eyebrow copy' 'title copy';
+  grid-template-rows: 27px auto;
+  column-gap: 40px;
+  align-items: start;
+  margin-bottom: 24px;
+}
+
+.section-header .eyebrow {
+  grid-area: eyebrow;
+}
+
+.section-header h2 {
+  grid-area: title;
+  max-width: 650px;
+  margin: 0;
+}
+
+.section-header > p:last-child {
+  grid-area: copy;
+  max-width: 550px;
+  margin: 27px 0 0;
+  font-size: var(--text-md);
+}
+
+.material-section {
+  padding: 58px 0;
+  background: var(--color-forest);
+  color: var(--color-white);
+}
+
+.material-grid {
+  display: grid;
+  grid-template-columns: 0.72fr 1.28fr;
+  gap: 62px;
+  align-items: center;
+}
+
+.material-section .eyebrow {
+  color: var(--color-forest-300);
+}
+
+.material-section h2 {
+  max-width: 600px;
+  margin-bottom: 20px;
+  color: var(--color-white);
+  font-size: clamp(34px, 3.5vw, 56px);
+}
+
+.material-section p {
+  max-width: 560px;
+  color: var(--color-forest-250);
+  font-size: var(--text-md);
+}
+
+#technical-data .section-header {
+  margin-bottom: 30px;
+}
+
+.cta-section {
+  padding: 0 0 34px;
+  background: var(--color-white);
+}
+
+.cta-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  min-height: 190px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  color: var(--color-white);
+  background: linear-gradient(105deg, var(--color-forest) 0%, var(--color-forest) 56%, var(--color-forest-850) 78%, var(--color-forest-dark) 100%);
+}
+
+.cta-inner:before {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 64%;
+  background-image: url('../../assets/images/shared/cta-hardboard-texture.webp');
+  background-repeat: no-repeat;
+  background-position: center 58%;
+  background-size: cover;
+  opacity: 0.86;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(var(--color-black-rgb), 0.08) 10%,
+    rgba(var(--color-black-rgb), 0.3) 26%,
+    rgba(var(--color-black-rgb), 0.62) 48%,
+    rgba(var(--color-black-rgb), 0.88) 68%,
+    var(--color-black) 84%,
+    var(--color-black) 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(var(--color-black-rgb), 0.08) 10%,
+    rgba(var(--color-black-rgb), 0.3) 26%,
+    rgba(var(--color-black-rgb), 0.62) 48%,
+    rgba(var(--color-black-rgb), 0.88) 68%,
+    var(--color-black) 84%,
+    var(--color-black) 100%
+  );
+  pointer-events: none;
+}
+
+.cta-inner:after {
+  display: none;
+  content: none;
+}
+
+.cta-inner > div {
+  min-width: 0;
+}
+
+.cta-inner .eyebrow {
+  color: var(--color-forest-300);
+}
+
+.cta-inner h2 {
+  max-width: none;
+  margin: 0;
+  color: var(--color-white);
+  font-size: clamp(34px, 3.3vw, 54px);
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 1180px) {
+  .material-grid {
+    grid-template-columns: 1fr 1.3fr;
+    gap: 35px;
+  }
+}
+
+@media (max-width: 820px) {
+  .section-header {
+    display: block;
+    margin-bottom: 20px;
+  }
+  .section-header > p:last-child {
+    margin-top: 12px;
+  }
+  .material-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .cta-inner {
+    grid-template-columns: 1fr;
+    align-items: start;
+    padding: 32px 28px;
+  }
+}
+
+@media (max-width: 560px) {
+  .page-section {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  .material-section {
+    padding: 46px 0;
+  }
+  .cta-section {
+    padding-bottom: 20px;
+  }
+  .cta-inner {
+    min-height: 0;
+    padding: 28px 22px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .cta-inner h2 {
+    white-space: normal;
+  }
+}
+
+.page-section {
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+
+.material-section {
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+
+.cta-section {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.cta-inner {
+  padding: 32px !important;
+  gap: 32px !important;
+}
+
+@media (max-width: 1000px) {
+  .page-section {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+  .material-section {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+}
+
+@media (max-width: 650px) {
+  .page-section {
+    padding-top: 44px;
+    padding-bottom: 44px;
+  }
+  .material-section {
+    padding-top: 44px;
+    padding-bottom: 44px;
+  }
+  .cta-inner {
+    padding: 24px !important;
+    gap: 24px !important;
+  }
+}

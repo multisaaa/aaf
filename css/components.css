@@ -1,0 +1,14 @@
+/* Shared component stylesheet manifest. Keep this order: later files contain
+   intentional refinements of the base component rules. */
+@import url('./components/base.css');
+@import url('./components/layout.css');
+@import url('./components/cards.css');
+@import url('./components/tables.css');
+@import url('./components/forms.css');
+@import url('./components/buttons.css?v=4');
+@import url('./components/header.css?v=4');
+@import url('./components/navigation.css?v=2');
+@import url('./components/language-switcher.css?v=2');
+@import url('./components/footer.css');
+@import url('./components/image-loading.css');
+@import url('./components/motion.css');

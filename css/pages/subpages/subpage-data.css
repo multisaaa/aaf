@@ -1,0 +1,144 @@
+.subpage-main .data-table-wrap {
+  overflow-x: auto;
+  padding: 28px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-white);
+  -webkit-overflow-scrolling: touch;
+}
+.subpage-main .data-table {
+  width: 100%;
+  min-width: 760px;
+  table-layout: fixed;
+  border-collapse: collapse;
+  text-align: left;
+}
+.subpage-main .data-table th {
+  padding: 0 18px 12px 0;
+  border-bottom: 1px solid var(--color-border) !important;
+  background: transparent;
+  color: var(--color-muted);
+  font-size: var(--text-xs) !important;
+  font-weight: 600 !important;
+  line-height: 1.35;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  vertical-align: bottom;
+}
+.subpage-main .data-table td {
+  padding: 12px 18px 12px 0;
+  border-bottom: 1px solid var(--color-border) !important;
+  color: var(--color-ink);
+  font-size: var(--text-md) !important;
+  line-height: 1.5;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+.subpage-main .data-table th:last-child,
+.subpage-main .data-table td:last-child {
+  padding-right: 0;
+}
+.subpage-main .data-table tbody tr:last-child td {
+  border-bottom: 0 !important;
+}
+.subpage-main .data-table td:first-child {
+  color: var(--color-muted) !important;
+  font-weight: 400 !important;
+}
+.subpage-main .data-table td:nth-child(2) {
+  color: var(--color-ink);
+  font-weight: 600;
+}
+.subpage-main .data-table[data-columns='4'] th:nth-child(1),
+.subpage-main .data-table[data-columns='4'] td:nth-child(1) {
+  width: 36%;
+}
+.subpage-main .data-table[data-columns='4'] th:nth-child(2),
+.subpage-main .data-table[data-columns='4'] td:nth-child(2) {
+  width: 30%;
+}
+.subpage-main .data-table[data-columns='4'] th:nth-child(3),
+.subpage-main .data-table[data-columns='4'] td:nth-child(3) {
+  width: 13%;
+}
+.subpage-main .data-table[data-columns='4'] th:nth-child(4),
+.subpage-main .data-table[data-columns='4'] td:nth-child(4) {
+  width: 21%;
+}
+.subpage-main .data-table[data-columns='3'] th:nth-child(1),
+.subpage-main .data-table[data-columns='3'] td:nth-child(1) {
+  width: 31%;
+}
+.subpage-main .data-table[data-columns='3'] th:nth-child(2),
+.subpage-main .data-table[data-columns='3'] td:nth-child(2) {
+  width: 45%;
+}
+.subpage-main .data-table[data-columns='3'] th:nth-child(3),
+.subpage-main .data-table[data-columns='3'] td:nth-child(3) {
+  width: 24%;
+}
+.subpage-main .data-table[data-columns='2'] th:first-child,
+.subpage-main .data-table[data-columns='2'] td:first-child {
+  width: 34%;
+}
+.subpage-main .data-table[data-columns='2'] th:last-child,
+.subpage-main .data-table[data-columns='2'] td:last-child {
+  width: 66%;
+}
+/* Anchor both maps to the shared card baseline while keeping the copy above compact. */
+
+.document-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.document-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 18px;
+  padding: 24px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-white);
+}
+.document-code {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  color: var(--color-white);
+  background: var(--color-forest);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-weight: 700;
+}
+.document-code .lucide {
+  width: 27px;
+  height: 27px;
+  stroke-width: 1.8;
+}
+.document-card h3 {
+  margin: 0 0 8px;
+}
+.document-card p {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: var(--text-base);
+  line-height: 1.5;
+}
+.document-card a {
+  display: inline-block;
+  margin-top: 14px;
+  color: var(--color-forest);
+  font-size: var(--text-md);
+  font-weight: 700;
+  text-decoration: none;
+}
+body[data-page='technical-resources'] .subpage-hero {
+  min-height: auto;
+  padding-bottom: 48px;
+}
+body[data-page='technical-resources'] .subpage-section {
+  padding-top: 64px;
+}

@@ -1,0 +1,40 @@
+/* Image placeholders, loading shimmer and reduced-motion fallback. */
+@keyframes aafImageSkeleton {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}
+
+/* Image placeholders use the board's fibre tone as a restrained loading cue. */
+
+html.aaf-image-skeletons .hero-media:not(.is-image-loaded),
+html.aaf-image-skeletons .home-company-network-image:not(.is-image-loaded),
+html.aaf-image-skeletons .evidence-card:not(.is-image-loaded),
+html.aaf-image-skeletons .application-actual-media:not(.is-image-loaded),
+html.aaf-image-skeletons .process-steps figure:not(.is-image-loaded) {
+  background-color: var(--color-surface) !important;
+  background-image: linear-gradient(
+    105deg,
+    var(--color-surface) 18%,
+    rgba(var(--color-fibre-light-rgb), 0.62) 40%,
+    rgba(var(--color-white-rgb), 0.9) 50%,
+    rgba(var(--color-fibre-light-rgb), 0.62) 60%,
+    var(--color-surface) 82%
+  ) !important;
+  background-size: 240% 100% !important;
+  animation: aafImageSkeleton 1.35s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.aaf-image-skeletons .hero-media:not(.is-image-loaded),
+  html.aaf-image-skeletons .home-company-network-image:not(.is-image-loaded),
+  html.aaf-image-skeletons .evidence-card:not(.is-image-loaded),
+  html.aaf-image-skeletons .application-actual-media:not(.is-image-loaded),
+  html.aaf-image-skeletons .process-steps figure:not(.is-image-loaded) {
+    animation: none;
+    background-position: 50% 0 !important;
+  }
+}

@@ -1,0 +1,102 @@
+/* Match Home's image interaction across every subpage media surface. */
+body[data-page] .subpage-main img {
+  transition: transform 0.35s ease !important;
+}
+
+body[data-page='wet-process-hardboard'] .subpage-main .manufacturing-photo img {
+  transition:
+    opacity 300ms ease,
+    transform 0.35s ease !important;
+}
+
+body[data-page='coil-packaging-components']
+  .subpage-main
+  .coil-evidence-card
+  .application-actual-media
+  img,
+body[data-page='automotive-interior-components']
+  .subpage-main
+  .automotive-evidence-card
+  .application-actual-media
+  img {
+  transition: transform 0.35s ease !important;
+}
+
+/* Page-specific card resets must not disable the shared slide-up reveal. */
+body[data-page='coil-packaging-components'] .subpage-main .coil-evidence-card.aaf-reveal,
+body[data-page='automotive-interior-components']
+  .subpage-main
+  .automotive-evidence-card.aaf-reveal {
+  transition:
+    opacity 0.88s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.88s cubic-bezier(0.22, 1, 0.36, 1) !important;
+  transition-delay: var(--reveal-delay, 0ms) !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body[data-page] .subpage-main figure:hover img,
+  body[data-page] .subpage-main .contact-map:hover img {
+    transform: scale(1.03) !important;
+  }
+
+  body[data-page='wet-process-hardboard'] .subpage-main .manufacturing-photo:hover img.is-current {
+    transform: scale(1.03) !important;
+  }
+
+  /* These page-specific rules intentionally disabled hover transforms; restore
+     the shared Home interaction for the image while keeping card lift rules unchanged. */
+  body[data-page='coil-packaging-components']
+    .subpage-main
+    .coil-evidence-card:hover
+    .application-actual-media
+    img,
+  body[data-page='automotive-interior-components']
+    .subpage-main
+    .automotive-evidence-card:hover
+    .application-actual-media
+    img {
+    transform: scale(1.03) !important;
+  }
+}
+
+/* Keep the first content reveals on contact, quote and privacy pages legible
+   against the slower, more spacious hero-support entrance. */
+@media (prefers-reduced-motion: no-preference) {
+  html.aaf-motion.aaf-motion-ready
+    body[data-page='contact-us']
+    .subpage-main
+    > section:not(.subpage-hero)
+    .aaf-reveal,
+  html.aaf-motion.aaf-motion-ready
+    body[data-page='request-a-quote']
+    .subpage-main
+    > section:not(.subpage-hero)
+    .aaf-reveal,
+  html.aaf-motion.aaf-motion-ready
+    body[data-page='privacy']
+    .subpage-main
+    > section:not(.subpage-hero)
+    .aaf-reveal {
+    transition-duration: 1.2s, 1.2s, 0.2s, 0.2s, 0.2s, 0.2s, 0.2s;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) and (max-width: 650px) {
+  html.aaf-motion.aaf-motion-ready
+    body[data-page='contact-us']
+    .subpage-main
+    > section:not(.subpage-hero)
+    .aaf-reveal,
+  html.aaf-motion.aaf-motion-ready
+    body[data-page='request-a-quote']
+    .subpage-main
+    > section:not(.subpage-hero)
+    .aaf-reveal,
+  html.aaf-motion.aaf-motion-ready
+    body[data-page='privacy']
+    .subpage-main
+    > section:not(.subpage-hero)
+    .aaf-reveal {
+    transition-duration: 1.1s, 1.1s, 0.2s, 0.2s, 0.2s, 0.2s, 0.2s;
+  }
+}

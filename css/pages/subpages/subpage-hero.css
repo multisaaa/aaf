@@ -1,0 +1,190 @@
+.subpage-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(420px, 1.1fr);
+  gap: clamp(28px, 5vw, 76px);
+  align-items: start;
+  padding-block: 0 64px;
+}
+
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 32px;
+  color: var(--color-muted);
+  font-size: var(--text-2xs);
+}
+.breadcrumbs a {
+  color: inherit;
+  text-decoration: none;
+}
+.breadcrumbs a:hover {
+  color: var(--color-forest);
+}
+.subpage-hero h1 {
+  margin: 13px 0 22px;
+  max-width: 760px;
+}
+.subpage-lead {
+  max-width: 660px;
+  margin: 0;
+  color: var(--color-muted);
+  font-size: var(--text-lg);
+  line-height: 1.5;
+}
+.subpage-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+.subpage-hero-media {
+  position: relative;
+  min-height: 510px;
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow);
+}
+.subpage-hero-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.subpage-gallery figure::after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(var(--color-ink-rgb), 0) 56%,
+    rgba(var(--color-ink-rgb), 0.06) 72%,
+    rgba(var(--color-ink-rgb), 0.84) 100%
+  );
+}
+.subpage-gallery figcaption {
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  gap: 4px;
+  padding: 72px 24px 24px;
+  color: white;
+  text-align: left;
+}
+.subpage-gallery figcaption span {
+  max-width: 52ch;
+  color: rgba(var(--color-white-rgb), 0.9);
+  font-size: var(--text-base);
+  line-height: 1.35;
+}
+
+/* Subpage hero media uses Home's independent fade and zoom-out entrance. */
+.subpage-hero-media > img {
+  transform-origin: 52% 50%;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html.aaf-motion .subpage-hero-media > img {
+    animation: aafHeroImageEntrance 1400ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .subpage-hero-media > img {
+    animation: none !important;
+    opacity: 1;
+    scale: 1;
+  }
+}
+@keyframes aafHeroImageEntrance {
+  from {
+    opacity: 0;
+    scale: 1.035;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+/* Hero support copy and actions use a first-load keyframe like Home, so the
+   entrance is visible before the scroll observer starts observing the page. */
+@media (prefers-reduced-motion: no-preference) {
+  html.aaf-motion .subpage-hero > div > .subpage-lead,
+  html.aaf-motion .subpage-hero > div > .subpage-actions {
+    animation: aafSubpageHeroTextEntrance 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: var(--subpage-hero-entrance-delay, 0ms);
+  }
+
+  .subpage-hero > div > .subpage-lead {
+    --subpage-hero-entrance-delay: 160ms;
+  }
+  .subpage-hero > div > .subpage-actions {
+    --subpage-hero-entrance-delay: 240ms;
+  }
+}
+
+@keyframes aafSubpageHeroTextEntrance {
+  from {
+    opacity: 0;
+    transform: translate3d(0, var(--subpage-hero-entrance-distance, 48px), 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (max-width: 650px) {
+  .subpage-hero > div {
+    --subpage-hero-entrance-distance: 32px;
+  }
+}
+
+@media (min-width: 821px) {
+  /* Keep the eyebrow aligned with Home while giving the breadcrumb a quieter midpoint position. */
+  .subpage-hero > div {
+    padding-top: 24px;
+  }
+  .subpage-hero .breadcrumbs {
+    margin-bottom: 8px;
+  }
+
+  /* Align supporting copy with the first heading line in two-column sections. */
+  .section-intro > .section-copy {
+    align-self: start;
+    margin-top: 27px;
+  }
+}
+
+@media (min-width: 981px) {
+  /* Match Home's desktop hero rhythm and keep the image inset evenly above the proof bar. */
+  .subpage-hero {
+    --subpage-hero-inset: 52px;
+    min-height: var(--desktop-hero-min-height);
+    padding-bottom: 0;
+  }
+  .subpage-hero-media {
+    align-self: start;
+    height: calc(100% - (2 * var(--subpage-hero-inset)));
+    min-height: 0;
+    margin-top: var(--subpage-hero-inset);
+  }
+
+  /* Contact has no proof bar, so let its factory image follow the copy row instead of the full Home-height hero. */
+  body[data-page='contact-us'] .subpage-hero {
+    min-height: auto;
+    padding-bottom: 64px;
+  }
+  body[data-page='contact-us'] .subpage-hero-media {
+    align-self: stretch;
+    height: auto;
+    min-height: 0;
+  }
+}

@@ -1,0 +1,175 @@
+/*
+ * Design tokens — the single source for colour, type, spacing, radius and motion.
+ * Approved v50 decisions. Component and page CSS should reference these values
+ * through var(--…) rather than repeating literals.
+ *
+ * Colour tokens come in two forms:
+ *   --color-<name>       a solid colour, e.g. color: var(--color-forest);
+ *   --color-<name>-rgb   the same colour as "r, g, b" channels for alpha use,
+ *                        e.g. background: rgba(var(--color-ink-rgb), 0.06);
+ *
+ * Breakpoints (CSS custom properties cannot be used inside @media, so they are
+ * listed here for reference; JS mirrors 820 in js/config.js):
+ *   1180px  wide desktop → desktop     (max-width: 1180px)
+ *   1000px  desktop → small desktop    (max-width: 1000px)
+ *    820px  desktop → tablet/mobile nav (max-width: 820px) / (min-width: 821px)
+ *    650px  tablet → large phone       (max-width: 650px)
+ *    560px  phone                      (max-width: 560px)
+ */
+:root {
+  /* ── Brand palette ─────────────────────────────────────────────── */
+  --color-forest: #234c40;
+  --color-forest-dark: #17392f;
+  --color-ink: #101613;
+  --color-muted: #626a70;
+  --color-border: #dce2de;
+  --color-surface: #f3f6f4;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-fibre: #bb8966;
+  --color-fibre-light: #e9d6c5;
+
+  /* ── Forest scale (green tints and shades around --color-forest) ── */
+  --color-forest-50: #f1f7f4;
+  --color-forest-100: #eaf2ee;
+  --color-forest-150: #e2ebe6;
+  --color-forest-200: #dce7e2;
+  --color-forest-250: #d4dfd9;
+  --color-forest-300: #cad8d1;
+  --color-forest-400: #b8ccc2;
+  --color-forest-500: #8db6a8;
+  --color-forest-700: #35564c;
+  --color-forest-800: var(--color-forest);
+  --color-forest-850: #1d4338;
+  --color-forest-900: var(--color-forest-dark);
+  --color-forest-950: #0a2f25;
+
+  /* ── Neutral scale (grey with a slight green cast) ─────────────── */
+  --color-neutral-50: var(--color-surface);
+  --color-neutral-100: #edf0ee;
+  --color-neutral-150: #e1e5e2;
+  --color-neutral-200: var(--color-border);
+  --color-neutral-250: #d4dcd7;
+  --color-neutral-300: #adb6b0;
+  --color-neutral-350: #9ca59f;
+  --color-neutral-400: #96a09a;
+  --color-neutral-450: #89988f;
+  --color-neutral-500: #8a918d;
+  --color-neutral-550: #7b837f;
+  --color-neutral-600: #6a736e;
+  --color-neutral-650: var(--color-muted);
+  --color-neutral-800: #41554d;
+  --color-neutral-950: var(--color-ink);
+  --color-gray-200: #dddddd;
+
+  /* ── Warm paper (off-white backgrounds) ────────────────────────── */
+  --color-paper: #fbfaf7;
+  --color-paper-dim: #f5f5f2;
+
+  /* ── Fibre scale (warm brown around --color-fibre) ─────────────── */
+  --color-fibre-100: var(--color-fibre-light);
+  --color-fibre-200: #d8c4b5;
+  --color-fibre-300: #dab79d;
+  --color-fibre-400: #c99a78;
+  --color-fibre-500: var(--color-fibre);
+  --color-fibre-600: #a87555;
+  --color-fibre-700: #9e6d4e;
+  --color-fibre-800: #765c49;
+
+  /* ── Accents ───────────────────────────────────────────────────── */
+  --color-amber: #f2b95e;
+  --color-red: #a74635;
+  --color-leaf: #9eb98d;
+
+  /* ── RGB channels for translucent colours ──────────────────────── */
+  --color-forest-rgb: 35, 76, 64;
+  --color-forest-dark-rgb: 23, 57, 47;
+  --color-forest-950-rgb: 10, 47, 37;
+  --color-ink-rgb: 16, 22, 19;
+  --color-border-rgb: 220, 226, 222;
+  --color-surface-rgb: 243, 246, 244;
+  --color-white-rgb: 255, 255, 255;
+  --color-black-rgb: 0, 0, 0;
+  --color-fibre-rgb: 187, 137, 102;
+  --color-fibre-light-rgb: 233, 214, 197;
+
+  /* ── Typography ────────────────────────────────────────────────── */
+  --font-family: Helvetica, Arial, sans-serif;
+  /* Fixed sizes used across UI text. Display headings use one-off clamp() values
+     in their own components. */
+  --text-3xs: 9px;
+  --text-2xs: 10px;
+  --text-xs: 11px;
+  --text-sm: 12px;
+  --text-md: 13px;
+  --text-base: 14px;
+  --text-lg: 15px;
+  --text-xl: 16px;
+  --text-2xl: 18px;
+  --text-3xl: 20px;
+  --text-4xl: 28px;
+  --text-5xl: 32px;
+
+  /* ── Spacing ───────────────────────────────────────────────────── */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 40px;
+
+  /* ── Layout ────────────────────────────────────────────────────── */
+  --page-max-width: 1280px;
+  --page-padding-desktop: 40px;
+  --page-padding-mobile: 18px;
+  --desktop-hero-min-height: 700px;
+  --desktop-proof-min-height: 66px;
+
+  /* ── Radius ────────────────────────────────────────────────────── */
+  --radius-md: 14px;
+  --radius-sm: 14px;
+  --radius-lg: 14px;
+  --radius-pill: 99px;
+
+  /* ── Elevation & glass ─────────────────────────────────────────── */
+  --shadow: 0 12px 32px rgba(var(--color-ink-rgb), 0.06);
+  --glass-surface: rgba(var(--color-white-rgb), 0.58);
+  --glass-border: rgba(var(--color-border-rgb), 0.46);
+  --glass-shadow: 0 8px 26px rgba(var(--color-ink-rgb), 0.028);
+  --glass-filter: blur(30px) saturate(180%);
+  --dropdown-glass-surface: rgba(var(--color-white-rgb), 0.92);
+  --dropdown-glass-border: rgba(var(--color-border-rgb), 0.72);
+  --dropdown-glass-shadow: 0 18px 45px rgba(var(--color-ink-rgb), 0.12);
+  --dropdown-highlight: rgba(var(--color-fibre-rgb), 0.16);
+
+  /* ── Motion ────────────────────────────────────────────────────── */
+  --transition-fast: 0.18s ease;
+  --transition-medium: 0.35s ease;
+  --transition-slow: 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  --action-arrow-gap: 10px;
+}
+
+@media (min-width: 981px) and (max-width: 1180px) {
+  :root {
+    --desktop-hero-min-height: 650px;
+  }
+}
+
+@media (min-width: 1501px) {
+  :root {
+    --desktop-hero-min-height: 730px;
+  }
+}
+
+@media (min-width: 1361px) {
+  :root {
+    --desktop-proof-min-height: 52px;
+  }
+}

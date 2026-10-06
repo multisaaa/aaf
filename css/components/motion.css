@@ -1,0 +1,158 @@
+/* SplitText keeps the responsive line elements mounted after entering. GSAP
+   changes only each line's transform; the mask owns the clipping. */
+.heroHeadingLine {
+  display: block;
+  position: relative;
+  will-change: transform;
+}
+.heroHeadingLine-mask {
+  display: block;
+  overflow: hidden !important;
+  pointer-events: none;
+}
+html.aaf-motion.aaf-motion-ready .aaf-reveal.aaf-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+/* Content that enters with the opening viewport uses a keyframe so an
+   immediate observer intersection cannot skip its slide-up. */
+@media (prefers-reduced-motion: no-preference) {
+  html.aaf-motion .aaf-opening-content {
+    animation: aafOpeningContentEntrance 1100ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
+    animation-delay: var(--opening-content-delay, 0ms);
+  }
+}
+@keyframes aafOpeningContentEntrance {
+  from {
+    opacity: 0;
+    transform: translate3d(0, var(--opening-content-distance, 48px), 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+html.aaf-motion.aaf-motion-ready .evidence-card.aaf-visible:hover img {
+  transform: scale(1.018);
+}
+@media (hover: hover) and (pointer: fine) {
+  html.aaf-motion.aaf-motion-ready
+    .application-card.aaf-visible:hover
+    .application-actual-media
+    img {
+    transform: scale(1.03);
+  }
+  html.aaf-motion.aaf-motion-ready .application-card.aaf-reveal.aaf-visible:hover,
+  html.aaf-motion.aaf-motion-ready .application-card.aaf-opening-content:hover {
+    /* The legacy reveal rule overrode the approved 16px lift with 5px. */
+    transform: translate3d(0, -16px, 0);
+  }
+}
+@media (max-width: 650px) {
+  html.aaf-motion.aaf-motion-ready .aaf-reveal {
+    transform: translate3d(0, 58px, 0);
+    transition-duration: 0.78s;
+  }
+
+  html.aaf-motion .aaf-opening-content {
+    --opening-content-distance: 32px;
+  }
+  html.aaf-motion.aaf-motion-ready .aaf-reveal.aaf-visible {
+    transform: translate3d(0, 0, 0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-header {
+    transition: none !important;
+  }
+  html.aaf-motion.aaf-motion-ready .aaf-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .heroHeadingLine {
+    transform: none !important;
+    animation: none !important;
+    will-change: auto !important;
+  }
+}
+/* motion shared styles. Responsive rules live with their owning component. */
+@media (prefers-reduced-motion: no-preference) {
+  html.aaf-heading-pending :is(.hero, .subpage-hero) h1:not(.hero-heading-ready) {
+    visibility: hidden;
+  }
+}
+/* motion shared styles. Responsive rules live with their owning component. */
+html.aaf-motion.aaf-motion-ready .aaf-reveal {
+  opacity: 0;
+  transform: translate3d(0, 76px, 0);
+  transition:
+    opacity 0.88s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.88s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+/* Button hover uses independent translate; reveal timing must only delay
+   opacity and transform, leaving hover and focus feedback immediate. */
+html.aaf-motion.aaf-motion-ready .button.aaf-reveal {
+  transition:
+    opacity 0.88s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.88s cubic-bezier(0.22, 1, 0.36, 1),
+    translate 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+  transition-delay: var(--reveal-delay, 0ms), var(--reveal-delay, 0ms), 0ms, 0ms, 0ms, 0ms, 0ms;
+}
+
+/* The relationship flow is revealed as one deterministic sequence. The
+   parent shell stays static; only its five steps animate, so no opacity or
+   transform is compounded by a nested reveal. */
+html.aaf-motion.aaf-motion-ready .group-relationship-flow > .group-relationship-step {
+  opacity: 0;
+  transform: translate3d(0, 76px, 0);
+  will-change: opacity, transform;
+}
+
+html.aaf-motion.aaf-motion-ready
+  .group-relationship-flow.aaf-relationship-visible
+  > .group-relationship-step {
+  animation: aafRelationshipStepIn 0.78s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--relationship-step-delay, 0ms);
+}
+
+@keyframes aafRelationshipStepIn {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 76px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (max-width: 650px) {
+  html.aaf-motion.aaf-motion-ready .group-relationship-flow > .group-relationship-step {
+    transform: translate3d(0, 58px, 0);
+  }
+
+  html.aaf-motion.aaf-motion-ready
+    .group-relationship-flow.aaf-relationship-visible
+    > .group-relationship-step {
+    animation-duration: 0.72s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.aaf-motion.aaf-motion-ready .group-relationship-flow > .group-relationship-step,
+  html.aaf-motion.aaf-motion-ready
+    .group-relationship-flow.aaf-relationship-visible
+    > .group-relationship-step {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}
